@@ -1,0 +1,13 @@
+1 pro and 1 con for implementation a, b : 
+
+a.
+
+pro:  saving the token locally may lower dramatically the overhead on server because of fewer http requests. 
+
+con: the token may change dynamically (as the user edit it). thus, there is a possiblity that our 'saved' token will become invalidated.
+
+b.
+
+pro - re-requesting a token from the server each time the app launches keeps the token authenticated with the user who is launching the app. thus it may be more scure.
+
+con - a lot of http requests and high overhead for many app requests.  
