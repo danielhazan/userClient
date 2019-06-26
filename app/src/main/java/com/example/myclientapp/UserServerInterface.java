@@ -20,5 +20,9 @@ public interface UserServerInterface {
     @POST("/user/edit/")
     Call<UserResponse> EditUserName(@Header("Authorization") String token, @Body setUserPreNameRequest request);
 
+    @Headers("Content-Type: application/json")
+    @POST("/user/edit/")
+    Call<UserResponse> EditUserProfileImage(@Header("Authorization") String token, @Body setUserProfileImgReq request);
+
 
 }

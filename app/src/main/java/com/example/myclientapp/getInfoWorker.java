@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
+import androidx.work.ListenableWorker;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 import retrofit2.Response;
@@ -25,19 +26,25 @@ public class getInfoWorker extends Worker {
         String user_token  = getInputData().getString("key_token");
 
         try{
-            String newStr = "token" + " " + user_token;
+            String newToken =  "token" + " " + user_token;
 
-            Response<UserResponse> response = userServerInterface.getUserInfo(newStr).execute();
-            UserResponse tokenResponse = response.body();
-            String JsonToken = new Gson().toJson( tokenResponse);
+            Response<UserResponse> response = userServerInterface.getUserInfo(newToken).execute();
+            UserResponse userResponse = response.body();
+            String JsonToken = new Gson().toJson(userResponse);
             Data outputData = new Data.Builder().putString("key_user_info", JsonToken).build();
 
-            return Result.success(outputData);
+            return ListenableWorker.Result.success(outputData);
 
         } catch (IOException e) {
             e.printStackTrace();
-            return Result.failure();
+            return ListenableWorker.Result.failure();
         }
+
+
+
+
+
+
 
 
     }
