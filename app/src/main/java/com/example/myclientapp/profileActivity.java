@@ -57,7 +57,9 @@ public class profileActivity extends AppCompatActivity {
         // set profile image
 
         ImageView imageView = findViewById(R.id.imageView);
+        ImageView imageViewback = findViewById(R.id.header_cover_image);
         Picasso.get().load("http://hujipostpc2019.pythonanywhere.com" + url).into(imageView);
+        Picasso.get().load("http://hujipostpc2019.pythonanywhere.com" + url).into(imageViewback);
 
         //spinner!!
         Spinner spinner = findViewById(R.id.Spinner1);
@@ -154,6 +156,7 @@ public class profileActivity extends AppCompatActivity {
                     String url = user_token.data.image_url;
                     String image = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
                     ImageView imageView = findViewById(R.id.imageView);
+                    ImageView imageViewback = findViewById(R.id.header_cover_image);
                     Spinner spinner = findViewById(R.id.Spinner1);
 
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.images, android.R.layout.simple_spinner_item);
@@ -164,6 +167,7 @@ public class profileActivity extends AppCompatActivity {
 
 
                     Picasso.get().load("http://hujipostpc2019.pythonanywhere.com" + url).into(imageView);
+                    Picasso.get().load("http://hujipostpc2019.pythonanywhere.com" + url).into(imageViewback);
                     simpleProgressBar.setVisibility(View.INVISIBLE);
                 }
             }
